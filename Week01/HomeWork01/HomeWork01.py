@@ -6,7 +6,6 @@ user_agent = 'User-Agent:Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; en) Pr
 header = {'user-agent':user_agent}
 
 myurl = 'https://maoyan.com/films?sortId=1'
-#myurl = 'https://maoyan.com/films?showType=3&sortId=1'
 
 response = requests.get(myurl, headers=header)
 #print(response.text)
