@@ -1,3 +1,5 @@
+*.pyc
+.DS_Store
 Week01/.DS_Store
 Week01/.vscode/
 Week01/venv_week01/
@@ -11,6 +13,4 @@ Week03/Result.txt
 Week04/.DS_Store
 Week04/.vscode/
 Week04/venv_week04/
-*.pyc
-.DS_Store
 Week02/HomeWork02_1/movies/set_dbinfo.py
