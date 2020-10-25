@@ -26,6 +26,8 @@ try:
     cookies = browser.get_cookies()
     print(cookies)
     time.sleep(3)
-
 except Exception as e:
     print(e)
+finally:
+    browser.close()
+
