@@ -51,7 +51,7 @@ ROBOTSTXT_OBEY = True
 #See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    'movies.middlewares.MoviesDownloaderMiddleware': 543,
-   'movies.middlewares.RandomHttpProxyMiddleware':400,
+   'movies.middlewares.RandomHttpProxyMiddleware':None,
    'scrapy.middlewares.HttpProxyMiddleware':None,
 }
 

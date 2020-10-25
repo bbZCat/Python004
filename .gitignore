@@ -12,3 +12,5 @@ Week04/.DS_Store
 Week04/.vscode/
 Week04/venv_week04/
 *.pyc
+.DS_Store
+Week02/HomeWork02_1/movies/set_dbinfo.py
