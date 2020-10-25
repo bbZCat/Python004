@@ -1,9 +1,14 @@
-.DS_Store
+Week01/.DS_Store
 Week01/.vscode/
 Week01/venv_week01/
+Week02/.DS_Store
 Week02/.vscode/
 Week02/venv_week02/
+Week03/.DS_Store
 Week03/.vscode/
 Week03/venv_week03/
 Week03/Result.txt
+Week04/.DS_Store
+Week04/.vscode/
+Week04/venv_week04/
 *.pyc
