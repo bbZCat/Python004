@@ -92,10 +92,11 @@ print(pd.concat([table1, table2], ignore_index=True, sort=True))
 
 # 9. DELETE FROM table1 WHERE id=10;
 dash('9. DELETE FROM table1 WHERE id=1000') 
-table1.drop(table1[table1['id'].isin([1000])].index, axis=0, inplace=True)
+#table1.drop(table1[table1['id'].isin([1000])].index, axis=0, inplace=True)
+table1.drop(table1[table1['id']==1000].index, axis=0, inplace=True)
 print(table1)
 
 # 10. ALTER TABLE table1 DROP COLUMN column_name;
-dash('ALTER TABLE table1 DROP COLUMN salary;')
+dash('10. ALTER TABLE table1 DROP COLUMN salary;')
 table1.drop(['salary'], axis=1, inplace=True)
 print(table1)
