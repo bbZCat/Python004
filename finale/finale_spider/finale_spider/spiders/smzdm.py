@@ -7,6 +7,7 @@ import time
 from finale_spider.items import FinaleSpiderItem
 from finale_spider.pipelines import skulist, lock
 
+
 class SmzdmSpider(scrapy.Spider):
     name = 'smzdm'
     allowed_domains = ['smzdm.com']
@@ -122,32 +123,32 @@ class SmzdmSpider(scrapy.Spider):
         # 神奇的BUG，待查
         url = response.request.url
         sku = re.search(r'/p/(\d+)/', url).group(1)
-   
+
         commlist = Selector(response=response).xpath(
             '//*[@id="commentTabBlockNew"]/ul[1]/li')
 
         for comm in commlist:
             #avatar = comm.xpath('./div[1]/span/text()').get()
-            
+
             user = comm.xpath('./div[2]/div/a/span/text()').get()
-            cupdatetime = comm.xpath('./div[2]/div/div/meta/@content').get()        
+            cupdatetime = comm.xpath('./div[2]/div/div/meta/@content').get()
 
             strcid = comm.xpath('./div[2]/div[2]/div[1]/input').get()
             qid = 0
-            
+
             cdescription = comm.xpath(
                 './div[2]/div[2]/div[1]/p/span/text()').get()  # 原创评论
 
             if cdescription == None:  # 引用评论ID和内容位置不同
                 strcid = comm.xpath('./div[2]/div[3]/div[1]/input').get()
-                #取最后一个(直接)跟评ID
-                qids = comm.xpath('./div[2]/div[2]/blockquote')[-1] 
+                # 取最后一个(直接)跟评ID
+                qids = comm.xpath('./div[2]/div[2]/blockquote')[-1]
                 qid = qids.xpath('./@blockquote_cid').get()
                 cdescription = comm.xpath(
                     './div[2]/div[3]/div/p/span/text()').get()
 
             cid = re.search(r'comment-id="(\d+)"', strcid).group(1)
-            
+
             item['skuinfo'] = False
             item['cid'] = cid
             item['qid'] = qid
@@ -155,7 +156,7 @@ class SmzdmSpider(scrapy.Spider):
             item['user'] = user
             item['sku'] = sku
             item['skuurl'] = url
-            #过滤评论中的单引号，会引起SQL出错
+            # 过滤评论中的单引号，会引起SQL出错
             item['cdescription'] = str(cdescription).replace("'", " ")
 
             yield item

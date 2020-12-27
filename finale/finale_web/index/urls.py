@@ -6,5 +6,4 @@ urlpatterns = [
     path('<int:sku>', views.indexsku),
     path('search', views.search),
     path('', views.indexnull),
-
 ]

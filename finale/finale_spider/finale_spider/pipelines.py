@@ -103,8 +103,8 @@ class FinaleSpiderPipeline:
                 FROM dual WHERE NOT EXISTS \
                 (SELECT cid FROM index_comments WHERE cid='{cid}' and sku='{sku}')"
             try:
-                
-                #print(sql)
+
+                # print(sql)
                 self.cursor.execute(sql)
                 self.conn.commit()
             except Exception as e:
@@ -114,5 +114,3 @@ class FinaleSpiderPipeline:
                 self.conn.rollback()
 
         return item
-
-        

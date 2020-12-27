@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+import djcelery
+from celery.schedules import timedelta
+from celery.schedules import crontab
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -37,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #My App
+    # My App
     'index',
+    'djcelery',
+    'djcron',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +136,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+djcelery.setup_loader()
+BROKER_URL = 'redis://:123456@127.0.0.1:6379/'  # 代理人
+CELERY_IMPORTS = ('djcron.tasks')  # app
+CELERY_TIMEZONE = 'Asia/Shanghai'  # 时区
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'  # 定时任务调度器

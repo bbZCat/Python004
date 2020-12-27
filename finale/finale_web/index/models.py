@@ -1,12 +1,14 @@
 from django.db import models
 
+
 class SKUs(models.Model):
     # id 自动创建
     sku = models.PositiveIntegerField()  # sku id
     skuname = models.CharField(max_length=200)  # sku name
     updatetime = models.DateTimeField(null=True)  # update time
     skuurl = models.URLField()
-    pricescript = models.CharField(max_length=50, null=True)  # description of price
+    pricescript = models.CharField(
+        max_length=50, null=True)  # description of price
     skudescription = models.TextField(null=True)
     worthy = models.PositiveIntegerField(null=True)
     notworthy = models.PositiveIntegerField(null=True)
